@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         text-white flex flex-col 
         justify-center items-center 
          w-screen h-screen gap-5
-         p-28`}
+         p-28 max-[600px]:p-2`}
           >
             <Logo></Logo>
             <div className="flex w-full gap-6">
