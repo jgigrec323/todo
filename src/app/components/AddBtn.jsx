@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
+import { useAppContext } from "../context/AppContext";
 
 function AddBtn() {
   const [task, setTask] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { onAdd, setOnAdd } = useAppContext();
 
   const notify = (msg, isSuccess) =>
     isSuccess === true ? toast.success(msg) : toast.error(msg);
@@ -20,6 +22,7 @@ function AddBtn() {
     notify(response.data.message, true);
     setIsLoading(false);
     setTask("");
+    setOnAdd(!onAdd);
   };
   return (
     <div>
