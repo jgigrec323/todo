@@ -1,7 +1,26 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import { toast } from "sonner";
 
 function AddBtn() {
+  const [task, setTask] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const notify = (msg, isSuccess) =>
+    isSuccess === true ? toast.success(msg) : toast.error(msg);
+
+  const addTodo = async (e) => {
+    setIsLoading(true);
+    e.preventDefault();
+    const response = await axios.post("/api/todo", { task });
+    if (response.statusText !== "OK") {
+      notify(response.data.message, false);
+    }
+    notify(response.data.message, true);
+    setIsLoading(false);
+    setTask("");
+  };
   return (
     <div>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
@@ -23,11 +42,22 @@ function AddBtn() {
           <form className="flex justify-between">
             <input
               type="text"
+              value={task}
+              onChange={(e) => {
+                setTask(e.target.value);
+              }}
               placeholder="Type here"
               className="input input-bordered border-white w-full max-w-xs"
             />
-            <button className="btn hover:bg-purple-600 text-white bg-purple-700">
-              Add
+            <button
+              onClick={(e) => addTodo(e)}
+              className="btn hover:bg-purple-600 text-white bg-purple-700"
+            >
+              {isLoading ? (
+                <span className="loading loading-dots loading-md"></span>
+              ) : (
+                "Add"
+              )}
             </button>
           </form>
         </div>

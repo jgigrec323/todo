@@ -3,8 +3,8 @@ import "./globals.css";
 import Logo from "./components/Logo";
 import Sidebar from "./components/Sidebar";
 import MainContainer from "./components/MainContainer";
-
 const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "sonner";
 
 export const metadata = {
   title: "Todo",
@@ -21,6 +21,7 @@ export default function RootLayout({ children }) {
          w-screen h-screen gap-5
          p-28`}
       >
+        <Toaster position="top" richColors />
         <Logo></Logo>
         <div className="flex w-full gap-6">
           <Sidebar></Sidebar>
