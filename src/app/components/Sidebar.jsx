@@ -17,7 +17,7 @@ function Sidebar() {
     { path: "/week", label: "Week", icon: <BsCalendar3Week size={15} /> },
   ];
   return (
-    <div className="bg-neutral-900 h-[32rem] w-60 p-5 rounded-3xl">
+    <div className="bg-neutral-900 h-[32rem] w-60  p-5 rounded-3xl max-[600px]:hidden">
       <div className="mb-3">
         <h2 className="text-xl text-purple-200">Filters</h2>
       </div>
