@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Logo from "./components/Logo";
 import Sidebar from "./components/Sidebar";
+import MainContainer from "./components/MainContainer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,13 +18,13 @@ export default function RootLayout({ children }) {
         bg-neutral-950 
         text-white flex flex-col 
         justify-center items-center 
-         w-screen h-screen
-         p-32`}
+         w-screen h-screen gap-5
+         p-28`}
       >
         <Logo></Logo>
-        <div>
+        <div className="flex w-full gap-6">
           <Sidebar></Sidebar>
-          {children}
+          <MainContainer>{children}</MainContainer>
         </div>
       </body>
     </html>
